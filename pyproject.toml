@@ -1,0 +1,34 @@
+[project]
+name = "lab-semana1"
+version = "0.1.0"
+description = "Laboratorio Semana 1 - Air Quality (UCI): carga, limpieza y analisis"
+readme = "README.md"
+authors = [
+    { name = "Luis Torres" },
+    { name = "Patricio Heredia" },
+]
+requires-python = ">=3.13"
+dependencies = [
+    "matplotlib>=3.11.1",
+    "numpy>=2.5.2",
+    "pandas>=3.0.5",
+    "pyarrow>=25.0.1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.16.4",
+]
+
+# El proyecto es un conjunto de scripts (src/carga.py, src/analisis.py), no una
+# libreria instalable. Con package = false uv crea el entorno e instala las
+# dependencias, pero no intenta construir el proyecto en si.
+[tool.uv]
+package = false
+
+# Sin pythonpath, pytest falla con "ModuleNotFoundError: No module named 'src'"
+# al ejecutar from src.carga import cargar
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
