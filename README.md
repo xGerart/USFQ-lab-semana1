@@ -32,6 +32,12 @@ uv run python main.py
 
 ## Hallazgos
 
+- (A) Los 16.701 faltantes del dataset son invisibles para `isna()`: vienen
+  codificados con el centinela -200, asi que una lectura ingenua reporta **0
+  nulos** y trata esos -200 como mediciones validas. El efecto es silencioso y
+  grave: la media de `C6H6(GT)` cae a 1.87 en vez de 10.08, un factor de 5.4.
+  El dato no se pierde, se corrompe, y nada en el CSV avisa de ello.
+
 ## Decisiones de limpieza
 
 El dataset crudo tiene 9357 filas x 15 columnas y 16.701 faltantes. Ninguno
