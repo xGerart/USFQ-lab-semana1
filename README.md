@@ -33,3 +33,10 @@ uv run python main.py
 ## Hallazgos
 
 ## Decisiones de limpieza
+
+### Pregunta de investigación 1
+
+ 
+¿Por qué uv sync puede reconstruir el entorno aunque .venv/ no esté versionado en el repositorio?
+
+El archivo `uv.lock` está versionado en el repositorio, por lo que todos los colaboradores lo reciben al clonar el proyecto. `uv sync` utiliza la información almacenada en ese archivo para reconstruir el entorno virtual con las mismas versiones de dependencias.
