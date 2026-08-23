@@ -31,12 +31,21 @@ uv run python main.py
 ```
 
 ## Hallazgos
+(B) Al analizar los registros con los valores más altos de C6H6(GT), se observó que las mediciones de contaminación presentan una distribución desigual, con un grupo reducido de observaciones significativamente por encima del promedio.
 
 ## Decisiones de limpieza
 
-### Pregunta de investigación 1
+### Pregunta de investigación 1 
 
  
 ¿Por qué uv sync puede reconstruir el entorno aunque .venv/ no esté versionado en el repositorio?
 
-El archivo `uv.lock` está versionado en el repositorio, por lo que todos los colaboradores lo reciben al clonar el proyecto. `uv sync` utiliza la información almacenada en ese archivo para reconstruir el entorno virtual con las mismas versiones de dependencias.
+(B)El archivo `uv.lock` está versionado en el repositorio, por lo que todos los colaboradores lo reciben al clonar el proyecto. `uv sync` utiliza la información almacenada en ese archivo para reconstruir el entorno virtual con las mismas versiones de dependencias.
+
+### Pregunta de investigación 2
+¿qué diferencia hay entre correr pytest a secas y uv run pytest? 
+(B)Copilot said:
+
+La diferencia entre pytest y uv run pytest es que pytest ejecuta las pruebas con el intérprete de Python que esté activo en la terminal, que podría ser el Python global si no se ha activado el entorno virtual, mientras que uv run pytest garantiza que las pruebas se ejecuten usando la versión de Python y las dependencias definidas para el proyecto mediante uv; por ello, si alguien no activó el entorno virtual, pytest podría usar un entorno incorrecto y provocar errores o resultados inconsistentes, mientras que uv run pytest evita ese problema al utilizar automáticamente el entorno adecuado del proyecto.
+
+
