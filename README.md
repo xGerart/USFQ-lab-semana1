@@ -43,6 +43,31 @@ uv run python main.py
   desigual, con un grupo reducido de observaciones significativamente por
   encima del promedio.
 
+Los tres hallazgos siguientes salen de ejecutar `main.py`, que integra los dos
+modulos: son la lectura de lo que devuelven `resumen_por_grupo` y
+`recta_minimos_cuadrados`.
+
+- (C) El `resumen_por_grupo` por hora del dia revela un ciclo con **dos picos**:
+  15.89 ug/m3 de media a las 8:00 y 17.74 a las 19:00, contra un valle de 2.92 a
+  las 4:00. El pico es **6.1 veces** el valle. Los dos maximos coinciden con la
+  entrada y la salida del trabajo, asi que la fuente dominante de benceno en
+  esta estacion es el trafico, no un proceso industrial continuo: una fabrica
+  emitiendo las 24 horas daria una curva plana.
+
+- (D) La recta de minimos cuadrados entre `PT08.S2(NMHC)` y `C6H6(GT)` da
+  `a = 0.027416` y `b = -15.6644`, con correlacion **0.982**. Esto es el caso de
+  uso real del dataset: el sensor de oxido de estano cuesta una fraccion del
+  equipo de referencia, y con esa ecuacion se puede estimar el benceno sin el
+  aparato caro. El intercepto negativo no es un error: el sensor nunca baja de
+  383 aunque el benceno sea casi nulo, y la recta descuenta esa senal de fondo.
+
+- (E) Esa correlacion de 0.982 **esconde un sesgo**. Los residuos no son
+  simetricos: van de -1.21 a +18.67, todos los grandes hacia arriba. La relacion
+  real es una curva, no una recta, y el ajuste lineal se queda corto justo en
+  los valores altos, que son los que importan para una alerta de contaminacion.
+  En el maximo observado la recta predice 45.03 cuando el valor real es 63.7,
+  un 29% por debajo. Un R alto no garantiza que el modelo sirva en los extremos.
+
 ## Decisiones de limpieza
 
 El dataset crudo tiene 9357 filas x 15 columnas y 16.701 faltantes. Ninguno
