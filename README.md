@@ -38,6 +38,11 @@ uv run python main.py
   grave: la media de `C6H6(GT)` cae a 1.87 en vez de 10.08, un factor de 5.4.
   El dato no se pierde, se corrompe, y nada en el CSV avisa de ello.
 
+- (B) Al analizar los registros con los valores más altos de C6H6(GT), se
+  observó que las mediciones de contaminación presentan una distribución
+  desigual, con un grupo reducido de observaciones significativamente por
+  encima del promedio.
+
 ## Decisiones de limpieza
 
 El dataset crudo tiene 9357 filas x 15 columnas y 16.701 faltantes. Ninguno
