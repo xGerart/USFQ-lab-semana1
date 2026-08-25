@@ -31,6 +31,7 @@ uv run python main.py
 ```
 
 ## Hallazgos
+
 (B) Al analizar los registros con los valores más altos de C6H6(GT), se observó que las mediciones de contaminación presentan una distribución desigual, con un grupo reducido de observaciones significativamente por encima del promedio.
 
 ## Decisiones de limpieza
